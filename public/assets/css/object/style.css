@@ -3581,8 +3581,8 @@ color: #2072DF; /* 時間部分の文字色 */
 
 @media only screen and (min-width: 768px) {
   .popup-banner-bottom {
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
     max-width: 250px;
   }
 
