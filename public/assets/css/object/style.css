@@ -3579,6 +3579,30 @@ color: #2072DF; /* 時間部分の文字色 */
   display: block;
 }
 
+/* スマホ用のメディアクエリ */
+@media only screen and (max-width: 767px) {
+  .popup-banner-bottom {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: calc(100% - 2rem);
+    width: auto;
+  }
+
+  .popup-banner-bottom__close {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.8rem;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: rgba(130, 130, 130, 0.9);
+  }
+
+  .popup-banner-bottom__img {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .popup-banner-bottom {
     bottom: 0.5rem;
