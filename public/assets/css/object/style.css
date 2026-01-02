@@ -3511,7 +3511,7 @@ color: #2072DF; /* 時間部分の文字色 */
 }
 
 /* popup */
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   #pop_up {
     position: fixed;
     z-index: 2;
@@ -3571,10 +3571,11 @@ color: #2072DF; /* 時間部分の文字色 */
   #pop_up p {
     display: block;
   }
+
   }
   
   
-  @media (max-width: 767px) {
+  @media only screen and (max-width: 768px) {
     #pop_up {
       position: fixed;
       z-index: 2;
