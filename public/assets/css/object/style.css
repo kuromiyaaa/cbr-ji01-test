@@ -3520,7 +3520,7 @@ color: #2072DF; /* 時間部分の文字色 */
   bottom: 0.5rem;
   right: 0.5rem;
   z-index: 100;
-  max-width: 200px;
+  max-width: 260px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
