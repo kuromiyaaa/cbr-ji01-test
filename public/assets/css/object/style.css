@@ -3484,8 +3484,6 @@ color: #2072DF; /* 時間部分の文字色 */
 }
 
 
-
-
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 .cb-header__sp {
   display: block;
@@ -3519,7 +3517,7 @@ color: #2072DF; /* 時間部分の文字色 */
   position: fixed;
   bottom: 0.5rem;
   right: 0.5rem;
-  z-index: 100;
+  z-index: 10000;
   max-width: 260px;
   opacity: 0;
   transform: translateY(20px);
@@ -3550,7 +3548,7 @@ color: #2072DF; /* 時間部分の文字色 */
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease, background-color 0.3s ease;
-  z-index: 100;
+  z-index: 10001;
 }
 
 .popup-banner-bottom__close:hover {
@@ -3584,7 +3582,6 @@ color: #2072DF; /* 時間部分の文字色 */
   .popup-banner-bottom {
     bottom: 1rem;
     right: 1rem;
-    left: 1rem;
     max-width: calc(100% - 2rem);
     width: auto;
   }
