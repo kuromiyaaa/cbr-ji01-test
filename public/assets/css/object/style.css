@@ -2714,6 +2714,7 @@ letter-spacing: 0.1em;
 
 .cb-plan__cam {
   max-width: 900px;
+  margin: auto;
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
