@@ -19,7 +19,8 @@
 
   <!-- スクリプト -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+  <script src="/assets/js/popup.js"></script>
+  
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/base/base.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/base/config.css" type="text/css">
@@ -948,7 +949,7 @@
 
 
   <!-- 追従ボタン スクリプト-->
-  <script>
+  <!-- <script>
     $(function () {
       $(window).on('load scroll', function () {
         var btn = $('.kotei-btn'); //問合せボタン
@@ -968,7 +969,7 @@
     function inquiry() {
       document.frm.submit();
     }
-  </script>
+  </script> -->
 
   <!-- 追従ボタン -->
   <!-- <div class="kotei-btn">
@@ -977,14 +978,6 @@
     </a>
   </div> -->
 
-  <!-- 右下ポップアップバナー -->
-  <div id="popup-banner-bottom" class="popup-banner-bottom">
-    <button class="popup-banner-bottom__close" aria-label="閉じる">×</button>
-    <a href="#c-form" class="popup-banner-bottom__link">
-      <img src="/assets/img/banner.jpg" alt="キャンペーンバナー" class="popup-banner-bottom__img">
-    </a>
-  </div>
-
   <!-- faq スクリプト -->
   <script>
     $('.c-faq__item').click(function () {
@@ -992,66 +985,16 @@
     })
   </script>
 
-  <!-- 右下ポップアップバナー スクリプト -->
-  <script>
-    (function() {
-      // jQueryの読み込み確認
-      if (typeof jQuery === 'undefined') {
-        console.error('jQueryが読み込まれていません');
-        return;
-      }
-      
-      jQuery(document).ready(function($) {
-        var popupBanner = $('#popup-banner-bottom');
-        var popupClose = $('.popup-banner-bottom__close');
-        
-        // 要素が存在するか確認
-        if (popupBanner.length === 0) {
-          console.error('ポップアップ要素が見つかりません');
-          return;
-        }
-        
-        // ローカルストレージから表示状態を確認
-        var popupShown = null;
-        var popupShownTime = null;
-        try {
-          popupShown = localStorage.getItem('popupBannerBottomShown');
-          popupShownTime = localStorage.getItem('popupBannerBottomShownTime');
-        } catch(e) {
-          console.warn('ローカルストレージにアクセスできません:', e);
-        }
-        
-        var currentTime = new Date().getTime();
-        var oneDay = 24 * 60 * 60 * 1000; // 1日（ミリ秒）
-        
-        // 1日経過していない場合は表示しない
-        if (popupShown === 'true' && popupShownTime && (currentTime - parseInt(popupShownTime)) < oneDay) {
-          return;
-        }
-        
-        // ページ読み込み後3秒で表示
-        setTimeout(function() {
-          if (popupBanner.length > 0) {
-            popupBanner.addClass('is-active');
-          }
-        }, 3000);
-        
-        // 閉じるボタンクリック
-        popupClose.on('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          popupBanner.removeClass('is-active');
-          var closeTime = new Date().getTime();
-          try {
-            localStorage.setItem('popupBannerBottomShown', 'true');
-            localStorage.setItem('popupBannerBottomShownTime', closeTime.toString());
-          } catch(e) {
-            console.warn('ローカルストレージに保存できません:', e);
-          }
-        });
-      });
-    })();
-  </script>
+
+  <!-- pop up -->
+  <div id="pop_up">
+    <button type="button">×</button>
+  
+    <!-- 初期表示：画像 -->
+   <div id="popup_image">
+      <img src="assets/img/popup.jpg" alt="新春キャンペーン">
+    </div>
+  
 
 </body>
 
