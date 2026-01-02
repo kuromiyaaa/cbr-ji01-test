@@ -287,6 +287,7 @@
 ============================ */
 .c-faq {
   padding: 2rem 0;
+  background-color: #f8f8f8;
 }
 
 .c-faq__inner {
@@ -427,6 +428,8 @@
 @media only screen and (min-width: 768px) {
   .c-faq {
     padding: 3rem 0;
+    background-color: #f8f8f8;
+    
   }
 
   .c-faq__inner {
