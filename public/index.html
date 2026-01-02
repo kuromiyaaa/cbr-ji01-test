@@ -977,15 +977,12 @@
     </a>
   </div>
 
-  <!-- ポップアップバナー -->
-  <div id="popup-banner" class="popup-banner">
-    <div class="popup-banner__overlay"></div>
-    <div class="popup-banner__content">
-      <button class="popup-banner__close" aria-label="閉じる">×</button>
-      <a href="#c-form" class="popup-banner__link">
-        <img src="/assets/img/banner.jpg" alt="キャンペーンバナー" class="popup-banner__img">
-      </a>
-    </div>
+  <!-- 右下ポップアップバナー -->
+  <div id="popup-banner-bottom" class="popup-banner-bottom">
+    <button class="popup-banner-bottom__close" aria-label="閉じる">×</button>
+    <a href="#c-form" class="popup-banner-bottom__link">
+      <img src="/assets/img/banner.jpg" alt="キャンペーンバナー" class="popup-banner-bottom__img">
+    </a>
   </div>
 
   <!-- faq スクリプト -->
@@ -995,21 +992,19 @@
     })
   </script>
 
-  <!-- ポップアップバナー スクリプト -->
+  <!-- 右下ポップアップバナー スクリプト -->
   <script>
     $(function() {
-      // ポップアップバナーの表示制御
-      var popupBanner = $('#popup-banner');
-      var popupClose = $('.popup-banner__close');
-      var popupOverlay = $('.popup-banner__overlay');
+      var popupBanner = $('#popup-banner-bottom');
+      var popupClose = $('.popup-banner-bottom__close');
       
       // ローカルストレージから表示状態を確認
-      var popupShown = localStorage.getItem('popupBannerShown');
-      var popupShownTime = localStorage.getItem('popupBannerShownTime');
+      var popupShown = localStorage.getItem('popupBannerBottomShown');
+      var popupShownTime = localStorage.getItem('popupBannerBottomShownTime');
       var currentTime = new Date().getTime();
       var oneDay = 24 * 60 * 60 * 1000; // 1日（ミリ秒）
       
-      // 1日経過していない、または初回表示の場合は表示しない
+      // 1日経過していない場合は表示しない
       if (popupShown === 'true' && popupShownTime && (currentTime - parseInt(popupShownTime)) < oneDay) {
         return;
       }
@@ -1020,26 +1015,12 @@
       }, 3000);
       
       // 閉じるボタンクリック
-      popupClose.on('click', function() {
+      popupClose.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         popupBanner.removeClass('is-active');
-        localStorage.setItem('popupBannerShown', 'true');
-        localStorage.setItem('popupBannerShownTime', currentTime.toString());
-      });
-      
-      // オーバーレイクリックで閉じる
-      popupOverlay.on('click', function() {
-        popupBanner.removeClass('is-active');
-        localStorage.setItem('popupBannerShown', 'true');
-        localStorage.setItem('popupBannerShownTime', currentTime.toString());
-      });
-      
-      // ESCキーで閉じる
-      $(document).on('keydown', function(e) {
-        if (e.key === 'Escape' && popupBanner.hasClass('is-active')) {
-          popupBanner.removeClass('is-active');
-          localStorage.setItem('popupBannerShown', 'true');
-          localStorage.setItem('popupBannerShownTime', currentTime.toString());
-        }
+        localStorage.setItem('popupBannerBottomShown', 'true');
+        localStorage.setItem('popupBannerBottomShownTime', currentTime.toString());
       });
     });
   </script>

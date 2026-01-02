@@ -3513,106 +3513,86 @@ color: #2072DF; /* 時間部分の文字色 */
 
 }
 
-/* ポップアップバナー
+/* 右下ポップアップバナー
 ============================ */
-.popup-banner {
+.popup-banner-bottom {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10000;
-  display: none;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  max-width: 200px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
 }
 
-.popup-banner.is-active {
-  display: block;
+.popup-banner-bottom.is-active {
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-.popup-banner__overlay {
+.popup-banner-bottom__close {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
-}
-
-.popup-banner__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90vh;
-  background-color: white;
-  border-radius: 8px;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-.popup-banner__close {
-  position: absolute;
-  top: -1.5rem;
-  right: -1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: white;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #333;
+  color: white;
   border: none;
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s ease;
-  z-index: 10001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 10000;
 }
 
-.popup-banner__close:hover {
+.popup-banner-bottom__close:hover {
   opacity: 0.8;
+  background-color: #000;
 }
 
-.popup-banner__link {
+.popup-banner-bottom__link {
   display: block;
   width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.popup-banner__img {
+.popup-banner-bottom__link:hover {
+  transform: scale(1.05);
+}
+
+.popup-banner-bottom__img {
   width: 100%;
   height: auto;
   display: block;
-  max-width: 500px;
-  border-radius: 4px;
-  border-radius: 0.25rem;
 }
 
 @media only screen and (min-width: 768px) {
-  .popup-banner__content {
-    max-width: 600px;
-    padding: 1.5rem;
+  .popup-banner-bottom {
+    bottom: 2rem;
+    right: 2rem;
+    max-width: 250px;
   }
 
-  .popup-banner__img {
-    max-width: 600px;
-  }
-
-  .popup-banner__close {
-    top: -2rem;
-    right: -2rem;
-    width: 3rem;
-    height: 3rem;
-    font-size: 2.5rem;
+  .popup-banner-bottom__close {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.8rem;
+    top: -0.75rem;
+    right: -0.75rem;
   }
 }
