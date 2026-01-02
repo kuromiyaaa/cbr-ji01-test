@@ -2245,7 +2245,7 @@ letter-spacing: 0.1em;
       position: absolute;
       height: 17%;
       width: 8%;
-      bottom: -7%; 0%;
+      bottom: -7%;
       left: 21%;
       transform: translate(0%, 0%);
       z-index: 100;
@@ -3483,6 +3483,8 @@ color: #2072DF; /* 時間部分の文字色 */
   color: #185abc;
 }
 
+}
+
 
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 .cb-header__sp {
@@ -3516,16 +3518,12 @@ color: #2072DF; /* 時間部分の文字色 */
   #pop_up {
     position: fixed;
     z-index: 2;
-    bottom: 13px;
-    right: 13px;
-    width: 230px;
+    bottom: 10px;
+    right: 10px;
+    width: 260px;
     border-radius: 0.5rem;
-    /* background: #ffffff; */
-    /* border-top: #e83d1b solid 20px; */
-    /* color: #333333; */
-    /* font-size: 13px; */
     box-sizing: border-box;
-    box-shadow: 0 0 10px #c7c7c7;
+    box-shadow: 0 0 15px #0000001f;
   }
   
   #pop_up img {
@@ -3602,5 +3600,4 @@ color: #2072DF; /* 時間部分の文字色 */
     height: 30px;
     line-height: 1;
   }
-    
-    }
+}
