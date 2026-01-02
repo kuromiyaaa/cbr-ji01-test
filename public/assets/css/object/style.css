@@ -3583,7 +3583,7 @@ color: #2072DF; /* 時間部分の文字色 */
   .popup-banner-bottom {
     bottom: 0.5rem;
     right: 0.5rem;
-    max-width: 250px;
+    max-width: 265px;
   }
 
   .popup-banner-bottom__close {
