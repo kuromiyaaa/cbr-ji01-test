@@ -902,9 +902,8 @@ letter-spacing: 0.1em;
 }
 
 .cb-plan__cam {
-  width: 90%;
-  max-width: 570px;
-  margin: 2rem auto;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .cb-plan__cam picture {
@@ -2714,9 +2713,9 @@ letter-spacing: 0.1em;
 }
 
 .cb-plan__cam {
-  width: 90%;
-  max-width: 1200px;
-  margin: 2rem auto;
+  max-width: 900px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .cb-plan__cam picture {
