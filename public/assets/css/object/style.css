@@ -3533,7 +3533,6 @@ color: #2072DF; /* 時間部分の文字色 */
   
   #pop_up img:hover {
     transform: scale(1.05);
-    opacity: 0.9;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
@@ -3618,4 +3617,5 @@ color: #2072DF; /* 時間部分の文字色 */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
+  
 }
