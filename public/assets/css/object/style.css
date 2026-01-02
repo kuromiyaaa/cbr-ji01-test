@@ -3520,13 +3520,15 @@ color: #2072DF; /* 時間部分の文字色 */
   z-index: 10000;
   max-width: 260px;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   pointer-events: none;
 }
 
 .popup-banner-bottom.is-active {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
 }

@@ -994,35 +994,63 @@
 
   <!-- 右下ポップアップバナー スクリプト -->
   <script>
-    $(function() {
-      var popupBanner = $('#popup-banner-bottom');
-      var popupClose = $('.popup-banner-bottom__close');
-      
-      // ローカルストレージから表示状態を確認
-      var popupShown = localStorage.getItem('popupBannerBottomShown');
-      var popupShownTime = localStorage.getItem('popupBannerBottomShownTime');
-      var currentTime = new Date().getTime();
-      var oneDay = 24 * 60 * 60 * 1000; // 1日（ミリ秒）
-      
-      // 1日経過していない場合は表示しない
-      if (popupShown === 'true' && popupShownTime && (currentTime - parseInt(popupShownTime)) < oneDay) {
+    (function() {
+      // jQueryの読み込み確認
+      if (typeof jQuery === 'undefined') {
+        console.error('jQueryが読み込まれていません');
         return;
       }
       
-      // ページ読み込み後3秒で表示
-      setTimeout(function() {
-        popupBanner.addClass('is-active');
-      }, 3000);
-      
-      // 閉じるボタンクリック
-      popupClose.on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        popupBanner.removeClass('is-active');
-        localStorage.setItem('popupBannerBottomShown', 'true');
-        localStorage.setItem('popupBannerBottomShownTime', currentTime.toString());
+      jQuery(document).ready(function($) {
+        var popupBanner = $('#popup-banner-bottom');
+        var popupClose = $('.popup-banner-bottom__close');
+        
+        // 要素が存在するか確認
+        if (popupBanner.length === 0) {
+          console.error('ポップアップ要素が見つかりません');
+          return;
+        }
+        
+        // ローカルストレージから表示状態を確認
+        var popupShown = null;
+        var popupShownTime = null;
+        try {
+          popupShown = localStorage.getItem('popupBannerBottomShown');
+          popupShownTime = localStorage.getItem('popupBannerBottomShownTime');
+        } catch(e) {
+          console.warn('ローカルストレージにアクセスできません:', e);
+        }
+        
+        var currentTime = new Date().getTime();
+        var oneDay = 24 * 60 * 60 * 1000; // 1日（ミリ秒）
+        
+        // 1日経過していない場合は表示しない
+        if (popupShown === 'true' && popupShownTime && (currentTime - parseInt(popupShownTime)) < oneDay) {
+          return;
+        }
+        
+        // ページ読み込み後3秒で表示
+        setTimeout(function() {
+          if (popupBanner.length > 0) {
+            popupBanner.addClass('is-active');
+          }
+        }, 3000);
+        
+        // 閉じるボタンクリック
+        popupClose.on('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          popupBanner.removeClass('is-active');
+          var closeTime = new Date().getTime();
+          try {
+            localStorage.setItem('popupBannerBottomShown', 'true');
+            localStorage.setItem('popupBannerBottomShownTime', closeTime.toString());
+          } catch(e) {
+            console.warn('ローカルストレージに保存できません:', e);
+          }
+        });
       });
-    });
+    })();
   </script>
 
 </body>
