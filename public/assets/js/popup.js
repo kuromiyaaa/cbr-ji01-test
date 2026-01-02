@@ -15,8 +15,6 @@ $(document).ready(function () {
     $('#pop_up img').click(function () {
         var target = $('#cb-plan__cam');
         if (target.length) {
-            // popupを閉じる
-            upWindow.hide();
             // スクロール
             $('html, body').animate({
                 scrollTop: target.offset().top - 100
