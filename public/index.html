@@ -652,6 +652,13 @@
               <p class="">採用成功目標イメージ：7名以上<br>運用媒体数例：6媒体以上</p>
             </div>
           </div>
+          <div class="cb-plan__cam">
+            <picture>
+              <source media="(max-width: 767px)" srcset="/assets/img/cam_sp.png">
+              <img loading="lazy" src="/assets/img/cam_pc.png" alt="新春キャンペーン、2月中に1年分 or 6ヶ月分を一括発注した方限定でいずれかの特典を無償でご提供！">
+            </picture>
+          </div>
+
           <div class="cb-plan__item-cta-txt">初期費用は不要です!</div>
           <div class="cb-mock__cta cb-cta">
             <a href="#c-form">
@@ -970,11 +977,71 @@
     </a>
   </div>
 
+  <!-- ポップアップバナー -->
+  <div id="popup-banner" class="popup-banner">
+    <div class="popup-banner__overlay"></div>
+    <div class="popup-banner__content">
+      <button class="popup-banner__close" aria-label="閉じる">×</button>
+      <a href="#c-form" class="popup-banner__link">
+        <img src="/assets/img/banner.jpg" alt="キャンペーンバナー" class="popup-banner__img">
+      </a>
+    </div>
+  </div>
+
   <!-- faq スクリプト -->
   <script>
     $('.c-faq__item').click(function () {
       $(this).toggleClass('is-active');
     })
+  </script>
+
+  <!-- ポップアップバナー スクリプト -->
+  <script>
+    $(function() {
+      // ポップアップバナーの表示制御
+      var popupBanner = $('#popup-banner');
+      var popupClose = $('.popup-banner__close');
+      var popupOverlay = $('.popup-banner__overlay');
+      
+      // ローカルストレージから表示状態を確認
+      var popupShown = localStorage.getItem('popupBannerShown');
+      var popupShownTime = localStorage.getItem('popupBannerShownTime');
+      var currentTime = new Date().getTime();
+      var oneDay = 24 * 60 * 60 * 1000; // 1日（ミリ秒）
+      
+      // 1日経過していない、または初回表示の場合は表示しない
+      if (popupShown === 'true' && popupShownTime && (currentTime - parseInt(popupShownTime)) < oneDay) {
+        return;
+      }
+      
+      // ページ読み込み後3秒で表示
+      setTimeout(function() {
+        popupBanner.addClass('is-active');
+      }, 3000);
+      
+      // 閉じるボタンクリック
+      popupClose.on('click', function() {
+        popupBanner.removeClass('is-active');
+        localStorage.setItem('popupBannerShown', 'true');
+        localStorage.setItem('popupBannerShownTime', currentTime.toString());
+      });
+      
+      // オーバーレイクリックで閉じる
+      popupOverlay.on('click', function() {
+        popupBanner.removeClass('is-active');
+        localStorage.setItem('popupBannerShown', 'true');
+        localStorage.setItem('popupBannerShownTime', currentTime.toString());
+      });
+      
+      // ESCキーで閉じる
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && popupBanner.hasClass('is-active')) {
+          popupBanner.removeClass('is-active');
+          localStorage.setItem('popupBannerShown', 'true');
+          localStorage.setItem('popupBannerShownTime', currentTime.toString());
+        }
+      });
+    });
   </script>
 
 </body>
