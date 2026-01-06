@@ -11,14 +11,16 @@ $(document).ready(function () {
         $('#pop_up').hide();
     });
 
-    // popup画像をクリックしたらcb-plan__camにスクロール
+    // popup画像をクリックしたらc-formにスクロール
     $('#pop_up img').click(function () {
-        var target = $('#cb-plan__cam');
+        var target = $('#c-form');
         if (target.length) {
             // スクロール
             $('html, body').animate({
                 scrollTop: target.offset().top - 100
             }, 800);
+            // ポップアップを閉じる
+            $('#pop_up').hide();
         }
     });
 });
