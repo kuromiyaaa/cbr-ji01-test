@@ -6,8 +6,8 @@ $(document).ready(function () {
     // 初期状態でポップアップを非表示
     upWindow.hide(); 
 
-    // 「月額費用以外にかかる費用はありますか？」のFAQ項目を取得（2番目のFAQ項目）
-    var targetFaqItem = $('.c-faq__item').eq(1);
+    // 「サービスQ&A」の見出しを取得
+    var targetFaqItem = $('.c-faq h2');
 
     // スクロールイベントを監視
     $(window).on('scroll', function () {
