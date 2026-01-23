@@ -6,20 +6,19 @@ $(document).ready(function () {
     // 初期状態でポップアップを非表示
     upWindow.hide(); 
 
-    // FVセクションの高さを取得
-    var fvSection = $('.cb-fv');
-    var fvHeight = fvSection.length ? fvSection.outerHeight() : 0;
-    // FVより少し下（FVの高さ + 200px）で表示
-    var scrollThreshold = fvHeight + 200;
+    // 「月額費用以外にかかる費用はありますか？」のFAQ項目を取得（2番目のFAQ項目）
+    var targetFaqItem = $('.c-faq__item').eq(1);
 
     // スクロールイベントを監視
     $(window).on('scroll', function () {
-        if (!hasShown && flag) {
+        if (!hasShown && flag && targetFaqItem.length) {
             var scrollTop = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            var targetTop = targetFaqItem.offset().top;
             
-            // スクロール位置が閾値を超えたらポップアップを表示
-            if (scrollTop > scrollThreshold) {
-                upWindow.show();
+            // 要素が画面の中央付近に来たらポップアップを表示
+            if (scrollTop + windowHeight / 2 >= targetTop) {
+                upWindow.addClass('show');
                 hasShown = true;
             }
         }
@@ -28,7 +27,10 @@ $(document).ready(function () {
     // ✖ボタンで非表示
     $('#pop_up button').click(function () {
         flag = false;
-        $('#pop_up').hide();
+        upWindow.removeClass('show');
+        setTimeout(function() {
+            upWindow.hide();
+        }, 500); // アニメーション完了後に非表示
     });
 
     // popup画像をクリックしたらc-formにスクロール
@@ -40,7 +42,10 @@ $(document).ready(function () {
                 scrollTop: target.offset().top - 100
             }, 800);
             // ポップアップを閉じる
-            $('#pop_up').hide();
+            upWindow.removeClass('show');
+            setTimeout(function() {
+                upWindow.hide();
+            }, 500); // アニメーション完了後に非表示
         }
     });
 });
