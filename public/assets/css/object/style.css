@@ -3655,14 +3655,6 @@ color: #2072DF; /* 時間部分の文字色 */
     border-radius: 0.5rem;
     box-sizing: border-box;
     box-shadow: 0 0 15px #0000001f;
-    transform: translateY(150%);
-    opacity: 0;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-  }
-  
-  #pop_up.show {
-    transform: translateY(0);
-    opacity: 1;
   }
   
   #pop_up img {
@@ -3728,19 +3720,10 @@ color: #2072DF; /* 時間部分の文字色 */
       top: auto;
       right: 8px;
       bottom: 8px;
-      transform: translateY(150%);
-      -webkit-transform: translateY(150%);
-      -ms-transform: translateY(150%);
-      opacity: 0;
-      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+      transform: none;
+      -webkit-transform: none;
+      -ms-transform: none;
       box-shadow: 0px -3px 10px #00000029;
-    }
-    
-    #pop_up.show {
-      transform: translateY(0);
-      -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-      opacity: 1;
     }
     
   #pop_up button {

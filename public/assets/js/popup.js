@@ -18,7 +18,7 @@ $(document).ready(function () {
             
             // 要素が画面の中央付近に来たらポップアップを表示
             if (scrollTop + windowHeight / 2 >= targetTop) {
-                upWindow.addClass('show');
+                upWindow.show();
                 hasShown = true;
             }
         }
@@ -27,10 +27,7 @@ $(document).ready(function () {
     // ✖ボタンで非表示
     $('#pop_up button').click(function () {
         flag = false;
-        upWindow.removeClass('show');
-        setTimeout(function() {
-            upWindow.hide();
-        }, 500); // アニメーション完了後に非表示
+        $('#pop_up').hide();
     });
 
     // popup画像をクリックしたらc-formにスクロール
@@ -42,10 +39,7 @@ $(document).ready(function () {
                 scrollTop: target.offset().top - 100
             }, 800);
             // ポップアップを閉じる
-            upWindow.removeClass('show');
-            setTimeout(function() {
-                upWindow.hide();
-            }, 500); // アニメーション完了後に非表示
+            $('#pop_up').hide();
         }
     });
 });
